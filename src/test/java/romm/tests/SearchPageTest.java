@@ -32,7 +32,7 @@ public class SearchPageTest extends BaseTest {
         return new Object[][] {
                 {"Shevchenko", "9861"},
                 {"Lviv", "1773916"},
-                {"Lviv", "3333"}
+               // {"Lviv", "3333"}
         };
     }
 
