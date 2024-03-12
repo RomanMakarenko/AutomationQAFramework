@@ -8,6 +8,7 @@ import romm.AbstractComponent;
 import romm.sections.BurgerMenu;
 import romm.sections.PageHeader;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class SearchPage extends AbstractComponent {
         this.searchInput().sendKeys(searchText);
         this.startSearchBtn().click();
         try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
