@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import romm.components.BaseTest;
 import romm.components.Retry;
 import romm.pageobjects.SearchPage;
+import romm.utils.XLSXReader;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class SearchPageTest extends BaseTest {
         System.out.println(searchPage.getInputPlaceholder());
     }
 
-    @Test(dataProvider = "getRequestResult", retryAnalyzer = Retry.class)
+    @Test(dataProvider = "getDataFromXLSS", retryAnalyzer = Retry.class)
     public void searchResult(String requestText, String articleId) {
         SearchPage searchPage = new SearchPage(driver);
         searchPage.goTo();
@@ -34,6 +35,11 @@ public class SearchPageTest extends BaseTest {
                 {"Lviv", "1773916"},
                // {"Lviv", "3333"}
         };
+    }
+
+    @DataProvider
+    public Object[][] getDataFromXLSS() {
+        return new XLSXReader("src/test/java/romm/data/TestData.xlsx").getDataForDataProvider("SearchPage");
     }
 
 //    @DataProvider
